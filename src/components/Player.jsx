@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { WINNING_COMBINATIONS } from "./Winning_combinations";
 
 export default function Player({ name, symbol, isActive }) {
   const [isEditing, setIsEditing] = useState(false);

@@ -1,28 +1,15 @@
-import { useState } from "react";
 
-const initialBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null]
-];
-export default function GameBoard({ onSelect, playerSymbol }) {
-  const [gameBoard, setGameBoard] = useState(initialBoard);
-  function handleSelection(row, col) {
-    setGameBoard((prevBoard) => {
-      const updatedBoard = [...prevBoard.map((innerArray) => [...innerArray])];
-      updatedBoard[row][col] = playerSymbol;
-      return updatedBoard;
-    });
-    onSelect(); //Switch player turn
-  }
+export default function GameBoard({ onSelect, Board }) {
+  
+  
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {Board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelection(rowIndex, colIndex)}>
+                <button onClick={()=>onSelect(rowIndex,colIndex)} disabled={playerSymbol !==null}>
                   {playerSymbol}
                 </button>
               </li>
